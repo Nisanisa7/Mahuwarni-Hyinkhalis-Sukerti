@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const Home = () => {
+    const [repo, setRepo] = useState([])
+    useEffect(() => {
+      
+    }, [])
     return (
         <Styles>
           <CardTitle>
@@ -10,10 +14,14 @@ const Home = () => {
           <Card>
               <table>
                   <tr>
+                      <th>Id</th>
                       <th>Name</th>
+                      <th>Commit</th>
+                      <th>URL</th>
+                      <th>Language</th>
                   </tr>
                   <tr>
-                      <td>Name</td>
+                   
                   </tr>
               </table>
           </Card>
