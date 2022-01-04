@@ -1,11 +1,20 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const Home = () => {
     const [repo, setRepo] = useState([])
     useEffect(() => {
-      
+      axios.get("https://api.github.com/users/Nisanisa7/repos")
+      .then((res)=>{
+          const result = res.data
+          setRepo(result)
+        })
+      .catch((err)=>{
+          console.log(err);
+      })
     }, [])
+    console.log(repo, 'ini result');
     return (
         <Styles>
           <CardTitle>
@@ -15,14 +24,18 @@ const Home = () => {
               <table>
                   <tr>
                       <th>Id</th>
-                      <th>Name</th>
-                      <th>Commit</th>
+                      <th>Project Name</th>
                       <th>URL</th>
                       <th>Language</th>
                   </tr>
+                   {repo.map((item)=> (
                   <tr>
-                   
+                       <td>{item.id}</td>
+                       <td>{item.name}</td>
+                       <td>{item.url}</td>
+                       <td>{item.language}</td>
                   </tr>
+                   ))}
               </table>
           </Card>
         </Styles>
